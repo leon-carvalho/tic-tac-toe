@@ -53,6 +53,6 @@ describe('Game page', () => {
 
     fireEvent.click(resetButton);
 
-    expect(firstCard).toHaveTextContent('9');
+    expect(firstCard).toHaveTextContent('');
   });
 });
