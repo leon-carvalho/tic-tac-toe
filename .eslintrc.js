@@ -34,6 +34,7 @@ module.exports = {
       'warn',
       { extensions : ['.jsx', '.js']}
     ],
+    'react/no-array-index-key': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
