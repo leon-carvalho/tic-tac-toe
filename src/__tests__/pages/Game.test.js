@@ -10,17 +10,17 @@ describe('Game page', () => {
   });
 
   test('it should render "9" cards inside board', () => {
-    const { getAllByRole } = render(<Game />);
-    const cards = getAllByRole('button');
+    const { getAllByTestId } = render(<Game />);
+    const cards = getAllByTestId('card-game');
 
     expect(cards.length).toBe(9);
   });
 
   test('it should change "currentPlayer" when clicked', () => {
-    const { getAllByRole } = render(<Game />);
+    const { getAllByTestId } = render(<Game />);
 
-    const firstCard = getAllByRole('button')[0];
-    const secondCard = getAllByRole('button')[1];
+    const firstCard = getAllByTestId('card-game')[0];
+    const secondCard = getAllByTestId('card-game')[1];
 
     fireEvent.click(firstCard);
 
@@ -32,11 +32,27 @@ describe('Game page', () => {
   });
 
   test('card should be disabled after click', () => {
-    const { getAllByRole } = render(<Game />);
-    const firstCard = getAllByRole('button')[0];
+    const { getAllByTestId } = render(<Game />);
+
+    const firstCard = getAllByTestId('card-game')[0];
 
     fireEvent.click(firstCard);
 
     expect(firstCard).toBeDisabled();
+  });
+
+  test('it should reset game when click on "Reset Game" button', () => {
+    const { getAllByTestId, getByText } = render(<Game />);
+
+    const firstCard = getAllByTestId('card-game')[0];
+    const resetButton = getByText('Reset Game');
+
+    fireEvent.click(firstCard);
+
+    expect(firstCard).toHaveTextContent('X');
+
+    fireEvent.click(resetButton);
+
+    expect(firstCard).toHaveTextContent('9');
   });
 });

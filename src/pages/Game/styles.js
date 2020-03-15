@@ -8,6 +8,39 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  footer {
+    width: 100%;
+    height: 120px;
+
+    max-width: 400px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    button {
+      height: 50px;
+      width: 200px;
+
+      color: #fffffd;
+      border: none;
+      font-size: 16px;
+      background: transparent;
+      border: 1px solid #999;
+      border-radius: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
 `;
 
 export const Board = styled.div`
@@ -45,4 +78,39 @@ export const Card = styled.button.attrs({
 
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
   color: ${props => (props.player === 'X' ? '#00C6C1' : '#D2A517')};
+`;
+
+export const CurrentPlayer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 20px;
+  border: 1px solid #999;
+
+  span {
+    width: 40px;
+    height: 40px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:nth-child(1) {
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: ${props => (props.player === 'X' ? '#fff' : '#00C6C1')};
+      background: ${props =>
+        props.player === 'X' ? '#00C6C1' : 'transparent'};
+    }
+
+    &:nth-child(2) {
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      color: ${props => (props.player === 'O' ? '#fff' : '#D2A517')};
+      background: ${props =>
+        props.player === 'O' ? '#D2A517' : 'transparent'};
+    }
+  }
 `;
