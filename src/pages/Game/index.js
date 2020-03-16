@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { IoIosSync, IoIosRemove } from 'react-icons/io';
 
 import Card from '../../components/Card';
+import CurrentPlayer from '../../components/CurrentPlayer';
 import Header from '../../components/Header';
-import { Container, Board, CurrentPlayer, Overlay } from './styles';
+import { Container, Board, Overlay } from './styles';
 
 export default function Game() {
   const emptyBoard = new Array(9).fill('');
@@ -128,11 +129,7 @@ export default function Game() {
         </Board>
 
         <footer>
-          <CurrentPlayer player={currentPlayer}>
-            <span>X</span>
-            <span>O</span>
-          </CurrentPlayer>
-
+          <CurrentPlayer currentPlayer={currentPlayer} />
           <button type="button" onClick={resetGame}>
             <IoIosSync size={24} color="#fff" />
             Reset Game
