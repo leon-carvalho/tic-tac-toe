@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import {
-  IoIosSync,
-  IoIosClose,
-  IoIosRemove,
-  IoIosRadioButtonOff,
-} from 'react-icons/io';
+import { IoIosSync, IoIosRemove } from 'react-icons/io';
 
 import Card from '../../components/Card';
+import Header from '../../components/Header';
 import { Container, Board, CurrentPlayer, Overlay } from './styles';
 
 export default function Game() {
@@ -114,35 +110,14 @@ export default function Game() {
       )}
 
       <Container>
-        <header>
-          <div>
-            <IoIosClose size={40} color="#00C6C1" />
-            <strong>{oWinsAmount} win</strong>
-          </div>
-
-          <div>
-            <IoIosRadioButtonOff size={32} color="#D2A517" />
-            <strong>{xWinsAmount} wins</strong>
-          </div>
-
-          <div>
-            <IoIosRemove size={32} color="#c8c8c8" />
-            <strong>{drawsAmount} draws</strong>
-          </div>
-        </header>
+        <Header
+          xWinsAmount={xWinsAmount}
+          oWinsAmount={oWinsAmount}
+          drawsAmount={drawsAmount}
+        />
 
         <Board>
           {board.map((card, index) => (
-            // <Card
-            //   key={index}
-            //   disabled={!!card}
-            //   player={card}
-            //   data-testid="card-game"
-            //   onClick={() => handleCardClick(index)}
-            // >
-            //   {card}
-            // </Card>
-
             <Card
               key={index}
               player={card}
