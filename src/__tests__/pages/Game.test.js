@@ -55,4 +55,73 @@ describe('Game page', () => {
 
     expect(firstCard).toHaveTextContent('');
   });
+
+  test('it should show "Draw Message" when the game is draw', () => {
+    const { getByText, getAllByTestId } = render(<Game />);
+    const array = new Array(9).fill('');
+
+    array.forEach((item, index) =>
+      fireEvent.click(getAllByTestId('card-game')[index])
+    );
+
+    expect(getByText(/It is a Draw!!/i)).toBeDefined();
+  });
+
+  test('it should show "X wins" message when it wins the game', () => {
+    const { getByText, getAllByTestId } = render(<Game />);
+    const cards = getAllByTestId('card-game');
+
+    fireEvent.click(cards[0]); // x
+    fireEvent.click(cards[1]); // o
+    fireEvent.click(cards[3]); // x
+    fireEvent.click(cards[4]); // o
+    fireEvent.click(cards[6]); // x
+
+    expect(getByText(/x wins/i)).toBeInTheDocument();
+  });
+
+  test('it should show "O wins" message when it wins the game', () => {
+    const { getByText, getAllByTestId } = render(<Game />);
+    const cards = getAllByTestId('card-game');
+
+    fireEvent.click(cards[0]); // x
+    fireEvent.click(cards[1]); // o
+    fireEvent.click(cards[2]); // x
+    fireEvent.click(cards[4]); // o
+    fireEvent.click(cards[3]); // x
+    fireEvent.click(cards[7]); // o
+
+    expect(getByText(/o wins/i)).toBeInTheDocument();
+  });
+
+  test('it should clean board after click in "Play again" button', () => {
+    const { getAllByTestId, getByText } = render(<Game />);
+
+    const cards = getAllByTestId('card-game');
+
+    fireEvent.click(cards[0]); // x
+    fireEvent.click(cards[1]); // o
+    fireEvent.click(cards[3]); // x
+    fireEvent.click(cards[4]); // o
+    fireEvent.click(cards[6]); // x
+
+    fireEvent.click(getByText(/play again/i));
+
+    cards.forEach((card, index) => {
+      expect(cards[index]).toHaveTextContent('');
+    });
+  });
+
+  test('it should reset game after click in "Reset Game" button', () => {
+    const { getAllByTestId, getByText } = render(<Game />);
+    const firstCard = getAllByTestId('card-game')[0];
+
+    fireEvent.click(firstCard);
+
+    expect(firstCard).toHaveTextContent('X');
+
+    fireEvent.click(getByText(/reset game/i));
+
+    expect(firstCard).toHaveTextContent('');
+  });
 });
