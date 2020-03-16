@@ -10,7 +10,7 @@ export default function Header({ oWinsAmount, xWinsAmount, drawsAmount }) {
     <Container>
       <div>
         <IoIosClose size={40} color="#00C6C1" />
-        <strong>{oWinsAmount} win</strong>
+        <strong>{oWinsAmount} wins</strong>
       </div>
 
       <div>
