@@ -6,7 +6,8 @@ import {
   IoIosRadioButtonOff,
 } from 'react-icons/io';
 
-import { Container, Board, Card, CurrentPlayer, Overlay } from './styles';
+import Card from '../../components/Card';
+import { Container, Board, CurrentPlayer, Overlay } from './styles';
 
 export default function Game() {
   const emptyBoard = new Array(9).fill('');
@@ -132,15 +133,22 @@ export default function Game() {
 
         <Board>
           {board.map((card, index) => (
+            // <Card
+            //   key={index}
+            //   disabled={!!card}
+            //   player={card}
+            //   data-testid="card-game"
+            //   onClick={() => handleCardClick(index)}
+            // >
+            //   {card}
+            // </Card>
+
             <Card
               key={index}
-              disabled={!!card}
               player={card}
-              data-testid="card-game"
-              onClick={() => handleCardClick(index)}
-            >
-              {card}
-            </Card>
+              disabled={!!card}
+              handleClick={() => handleCardClick(index)}
+            />
           ))}
         </Board>
 

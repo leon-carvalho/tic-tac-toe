@@ -31,7 +31,7 @@ describe('Game page', () => {
     expect(secondCard).toHaveTextContent('O');
   });
 
-  test('card should be disabled after click', () => {
+  test('it should set clicked card as disabled after click', () => {
     const { getAllByTestId } = render(<Game />);
 
     const firstCard = getAllByTestId('card-game')[0];
