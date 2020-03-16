@@ -7,6 +7,7 @@ import Game from '../../pages/Game';
 describe('Game page', () => {
   afterEach(() => {
     cleanup();
+    localStorage.clear();
   });
 
   test('it should render "9" cards inside board', () => {
@@ -54,6 +55,7 @@ describe('Game page', () => {
     fireEvent.click(resetButton);
 
     expect(firstCard).toHaveTextContent('');
+    expect(localStorage.clear).toHaveBeenCalled();
   });
 
   test('it should show "Draw Message" when the game is draw', () => {
@@ -123,5 +125,32 @@ describe('Game page', () => {
     fireEvent.click(getByText(/reset game/i));
 
     expect(firstCard).toHaveTextContent('');
+  });
+
+  test('it should set and get "score" from localStorage', () => {
+    let { getAllByTestId } = render(<Game />);
+    const cards = getAllByTestId('card-game');
+
+    fireEvent.click(cards[0]); // x
+    fireEvent.click(cards[1]); // o
+    fireEvent.click(cards[3]); // x
+    fireEvent.click(cards[4]); // o
+    fireEvent.click(cards[6]); // x
+
+    expect(localStorage.setItem).toHaveBeenCalled();
+    expect(localStorage.setItem).toHaveBeenCalledWith(
+      'score',
+      JSON.stringify({
+        xWins: 1,
+        oWins: 0,
+        draws: 0,
+      })
+    );
+
+    cleanup();
+
+    ({ getAllByTestId } = render(<Game />));
+
+    expect(localStorage.getItem).toHaveBeenCalled();
   });
 });

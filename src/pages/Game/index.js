@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Card from '../../components/Card';
 import CurrentPlayer from '../../components/CurrentPlayer';
@@ -17,6 +17,42 @@ export default function Game() {
   const [xWinsAmount, setXWinsAmount] = useState(0);
   const [oWinsAmount, setOWinsAmount] = useState(0);
 
+  useEffect(() => {
+    function getScoreFromStorage() {
+      const storageData = JSON.parse(localStorage.getItem('score'));
+
+      if (storageData) {
+        if (storageData.xWins) {
+          setXWinsAmount(storageData.xWins);
+        }
+
+        if (storageData.oWins) {
+          setOWinsAmount(storageData.oWins);
+        }
+
+        if (storageData.draws) {
+          setDrawsAmount(storageData.draws);
+        }
+      }
+    }
+
+    getScoreFromStorage();
+  }, []);
+
+  useEffect(() => {
+    function saveScoreToLocalStorage() {
+      const score = {
+        xWins: xWinsAmount,
+        oWins: oWinsAmount,
+        draws: drawsAmount,
+      };
+
+      localStorage.setItem('score', JSON.stringify(score));
+    }
+
+    saveScoreToLocalStorage();
+  }, [oWinsAmount, xWinsAmount, drawsAmount]);
+
   function changeCurrentPlayer() {
     setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
   }
@@ -33,6 +69,8 @@ export default function Game() {
   }
 
   function resetGame() {
+    localStorage.removeItem('score');
+
     setDraw(false);
     setDrawsAmount(0);
 
