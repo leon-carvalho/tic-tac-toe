@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { IoIosRemove } from 'react-icons/io';
 
 import Card from '../../components/Card';
 import CurrentPlayer from '../../components/CurrentPlayer';
 import Header from '../../components/Header';
+import Overlay from '../../components/Overlay';
 import ResetButton from '../../components/ResetButton';
-import { Container, Board, Overlay } from './styles';
+import { Container, Board } from './styles';
 
 export default function Game() {
   const emptyBoard = new Array(9).fill('');
@@ -85,22 +85,10 @@ export default function Game() {
 
   return (
     <>
-      {draw && (
-        <Overlay>
-          <h1>It is a Draw!!</h1>
-
-          <IoIosRemove size={100} color="#333" />
-
-          <ResetButton text="Play Again" handleClick={resetBoard} />
-        </Overlay>
-      )}
+      {draw && <Overlay message="It is a Draw!!" handleClick={resetBoard} />}
 
       {winner && (
-        <Overlay>
-          <h1>{winner} Wins</h1>
-          <IoIosRemove size={100} color="#333" />
-          <ResetButton text="Play Again" handleClick={resetBoard} />
-        </Overlay>
+        <Overlay message={`${winner} Wins`} handleClick={resetBoard} />
       )}
 
       <Container>
