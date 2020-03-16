@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { IoIosSync, IoIosRemove } from 'react-icons/io';
+import { IoIosRemove } from 'react-icons/io';
 
 import Card from '../../components/Card';
 import CurrentPlayer from '../../components/CurrentPlayer';
 import Header from '../../components/Header';
+import ResetButton from '../../components/ResetButton';
 import { Container, Board, Overlay } from './styles';
 
 export default function Game() {
@@ -90,23 +91,15 @@ export default function Game() {
 
           <IoIosRemove size={100} color="#333" />
 
-          <button type="button" onClick={resetBoard}>
-            <IoIosSync size={24} color="#fff" />
-            Play Again
-          </button>
+          <ResetButton text="Play Again" handleClick={resetBoard} />
         </Overlay>
       )}
 
       {winner && (
         <Overlay>
           <h1>{winner} Wins</h1>
-
           <IoIosRemove size={100} color="#333" />
-
-          <button type="button" onClick={resetBoard}>
-            <IoIosSync size={24} color="#fff" />
-            Play Again
-          </button>
+          <ResetButton text="Play Again" handleClick={resetBoard} />
         </Overlay>
       )}
 
@@ -130,10 +123,7 @@ export default function Game() {
 
         <footer>
           <CurrentPlayer currentPlayer={currentPlayer} />
-          <button type="button" onClick={resetGame}>
-            <IoIosSync size={24} color="#fff" />
-            Reset Game
-          </button>
+          <ResetButton text="Reset Game" handleClick={resetGame} />
         </footer>
       </Container>
     </>
