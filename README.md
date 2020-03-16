@@ -23,9 +23,11 @@ Simple Tic-tac-toe game built with React.js, this project was made to apply my s
 - Tests
   - jest
   - @types/jest
+  - jest-localstorage-mock
   - @testing-library/react
   - @testing-library/jest-dom
   - @testing-library/user-event
+
 
 ## :running: Running
 
