@@ -14,6 +14,12 @@ Simple Tic-tac-toe game built with React.js, this project was made to apply my s
 - tests
 - responsive layout and styled-components.
 
+## :running: Running
+
+- clone or download this repo
+- open project with terminal/cmd and type: `yarn` or `npm install` to install dependencies
+- run: `yarn start` or `npm start` to run project in `localhost:3000` if this port is available
+
 ## :books: Techs and Libs
 
 - react-app-rewired (customize cra)
@@ -27,10 +33,3 @@ Simple Tic-tac-toe game built with React.js, this project was made to apply my s
   - @testing-library/react
   - @testing-library/jest-dom
   - @testing-library/user-event
-
-
-## :running: Running
-
-- clone or download this repo
-- open project with terminal/cmd and type: `yarn` or `npm install` to install dependencies
-- run: `yarn start` or `npm start` to run project in `localhost:3000` if this port is available
