@@ -1,10 +1,22 @@
 <h1 align="center">
-  S3T - Simple Tic Tac Toe
+  S3T-Simple Tic Tac Toe
 </h1>
 
 <h1 align="center">
   <img alt="app demo" src="./docs/game.png">
 </h1>
+
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/leon-carvalho/tic-tac-toe?color=%2304D361">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/leon-carvalho/tic-tac-toe">
+
+  <a href="https://github.com/leon-carvalho/tic-tac-toe/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/leon-carvalho/tic-tac-toe">
+  </a>
+
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
 
 ## :question: About
 
