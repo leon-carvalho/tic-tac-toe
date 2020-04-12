@@ -1,6 +1,7 @@
 {
   "name": "tic-tac-toe",
   "version": "0.1.0",
+  "homepage": "https://leon-carvalho.github.io/tic-tac-toe",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.1.1",
@@ -17,7 +18,9 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "ghpages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,6 +38,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "@types/jest": "^25.1.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
