@@ -26,6 +26,11 @@ Simple Tic-tac-toe game built with React.js, this project was made to apply my s
 - tests
 - responsive layout and styled-components.
 
+
+<a href="https://leon-carvalho.github.io/tic-tac-toe/"> 
+  <img src="https://img.shields.io/badge/DEMO-online%20demo-%237159c1?style=for-the-badge&logo=appveyor"/>
+</a>
+
 ## :running: Running
 
 - clone or download this repo
