@@ -50,3 +50,7 @@ Simple Tic-tac-toe game built with React.js, this project was made to apply my s
   - @testing-library/react
   - @testing-library/jest-dom
   - @testing-library/user-event
+  
+## :memo: License
+
+This project is under [MIT LICENSE](./LICENSE)
